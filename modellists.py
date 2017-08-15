@@ -77,7 +77,7 @@ def Get_links(client, Models_list_store):
                         "video_folder": Video_folder,
                         "date_string": st,
                     }
-                    flinks.write('livestreamer --output "%(video_folder)s/Chaturbate_%(date_string)s_%(model_name)s.flv" http://chaturbate.com/%(model_name)s best' % form_dict)
+                    flinks.write('streamlink --output "%(video_folder)s/Chaturbate_%(date_string)s_%(model_name)s.flv" http://chaturbate.com/%(model_name)s best' % form_dict)
                     flinks.write('\n')
                     flinks.close()
                     os.chmod(Script_folder+'/'+model+'.sh', 0777)
@@ -87,18 +87,18 @@ def Get_links(client, Models_list_store):
 
 def Rtmpdump_models():
         models = []
-        for line in os.popen("ps xa | grep livestreamer| grep -v 'grep'"):
+        for line in os.popen("ps xa | grep streamlink| grep -v 'grep'"):
                 fields = line.split()
-                # EXAMPLE: ['65192', 'pts/7', 'Sl+', '0:01', '/usr/bin/python', '/usr/local/bin/livestreamer', '--output', 'Video_folder_date.timestamp_username.flv', 'http://chaturbate.com/username', 'best', '--quiet']
+                # EXAMPLE: ['65192', 'pts/7', 'Sl+', '0:01', '/usr/bin/python', '/usr/local/bin/streamlink', '--output', 'Video_folder_date.timestamp_username.flv', 'http://chaturbate.com/username', 'best', '--quiet']
                 pid = fields[0]
                 process = fields[5]
-                if process == "/usr/local/bin/livestreamer":
+                if process == "/usr/local/bin/streamlink":
                         if Video_folder in fields[7]:
                                 if "http://chaturbate.com/" in (fields[8]):
                                         models.append(fields[8][22:])
                         else:
                                 logging.debug('Not In Video Folder: \n' + fields)
-        logging.debug('Livestreamer shows the following models: \n' + str(models))
+        logging.debug('Streamlink shows the following models: \n' + str(models))
         return models
 
 
