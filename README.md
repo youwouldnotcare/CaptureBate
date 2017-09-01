@@ -3,16 +3,20 @@ CaptureBate
 
 CaptureBate lets you follow and archive your favorite models shows on chaturbate.com
 
-Changes between ohhdemgirls and redyready
-==========
-Uses livestreamer to capture
-The Video_folder must have the full path or is a folder in the same directory as CaptureBate.
+This fork emphasizes the following aspects:
+- Improved stability
+- Updated selection of upstream components
+
+Changelog from ohhdemgirls:
+========
+- redyready1: The video folder must have the full path or is a folder in the same directory as CaptureBate.
+- youwouldnotcare: Uses streamlink to capture
 
 Requirements
 ==========
 (Debian 7, minimum)
 
-[livestreamer](http://docs.livestreamer.io/) used to capture the streams.
+[streamlink](https://github.com/streamlink/streamlink) used to capture the streams.
 
 [BeautifulSoup4](https://pypi.python.org/pypi/beautifulsoup4/4.3.2) the screen-scraping library.
 
