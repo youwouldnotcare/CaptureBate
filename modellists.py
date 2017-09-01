@@ -15,7 +15,7 @@ def Models_list(client):
 	except Exception, e:
 		logging.error('Some error during connecting to '+URL)
 		logging.error(e)
-	soup = BeautifulSoup(r2.text)
+	soup = BeautifulSoup(r2.text, "html.parser")
 	#logging.debug('Page Source for ' + URL_follwed + '\n' + r2.text)
 	page_source = 'Page Source for ' + URL_follwed + '\n' + r2.text
 	if Debugging == True:
